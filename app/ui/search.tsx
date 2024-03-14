@@ -1,13 +1,19 @@
 'use client';
 // This is a Client component , which means you can use event listeners and hooks .
 import {MagnifyingGlassIcon} from '@heroicons/react/24/outline';
+
+//url params .
 import { useSearchParams,useRouter,usePathname  } from "next/navigation";
+
 import { useDebouncedCallback } from 'use-debounce';
 
 export default function Search({placeholder}: { placeholder: string }) {
     const searchParams = useSearchParams();
+    console.log("searchParams(app.ui.search):",searchParams);
+
     const pathname = usePathname();
     const { replace } = useRouter();
+    //
     const handleSearch = useDebouncedCallback((term) => {
         console.log(`Searching.... ${term}`);
         const params = new URLSearchParams(searchParams);
